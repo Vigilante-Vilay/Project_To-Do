@@ -1,0 +1,48 @@
+import axios from "axios";
+import { useState} from "react";
+import { useNavigate } from "react-router-dom";
+import "../App.css"
+export function SignUp(){
+    const[user,setUser] = useState("");
+    const[pass,setPass] = useState("");
+    const navigate = useNavigate();
+    
+    function handleSignup(){
+        if(!user || !pass){
+            alert("Incorrect username or password")
+            return;
+        }
+        axios.post("http://localhost:5000/signup",{
+            username: user,
+            password: pass
+        }).then((res)=>{
+            axios.post("http://localhost:5000/login",{
+                username: user,
+                password: pass
+            }).then((res)=>{
+                console.log("Successfully Logged in as well")
+                const token = res.data.token;
+                sessionStorage.setItem("token",token); //Saving the token in the sessionStorage
+            navigate("/todos");
+            }).catch((err)=>{
+                console.log("Failure in logging in",err);
+            })
+        }).catch((err)=>{
+            if (err.response && err.response.data.error) {
+                alert(err.response.data.error); // Show alert with error message
+            } else {
+                alert("Failure in signup");
+            }
+        })
+    }
+    return <div className="orientation">
+        <h1 style={{fontFamily:"Calibri", color:"greenyellow"}}><b>To-Do App</b></h1><br></br>
+        <input style={{padding: "5px"}} type="text" placeholder="Enter username" onChange={(e)=>{
+            setUser(e.target.value);
+        }}></input><br></br>
+        <input style={{padding: "5px"}} type="password" placeholder="Enter Password" onChange={(e)=>{
+            setPass(e.target.value);
+        }}></input><br></br>
+        <button className="button" onClick={handleSignup}>Submit</button>
+    </div>
+}
