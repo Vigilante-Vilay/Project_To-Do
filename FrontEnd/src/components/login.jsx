@@ -24,6 +24,7 @@ export function Login(){
             if (err.response && err.response.data.error) {
                 alert(err.response.data.error); // Show alert with error message
             } else {
+                console.log(err);
                 alert("Login Failed");
             }
         })
