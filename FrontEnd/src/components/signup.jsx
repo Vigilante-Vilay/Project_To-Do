@@ -12,11 +12,11 @@ export function SignUp(){
             alert("Incorrect username or password")
             return;
         }
-        axios.post("http://localhost:5000/signup",{
+        axios.post("project-to-do-backend.vercel.app/signup",{
             username: user,
             password: pass
         }).then((res)=>{
-            axios.post("http://localhost:5000/login",{
+            axios.post("project-to-do-backend.vercel.app/login",{
                 username: user,
                 password: pass
             }).then((res)=>{
