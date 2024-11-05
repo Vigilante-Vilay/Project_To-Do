@@ -9,7 +9,7 @@ export function Todos(){
     const token = sessionStorage.getItem("token");
 
     useEffect(()=>{
-        axios.get("https://project-to-pgm3ssxh7-vilay-aggarwals-projects.vercel.app/Todos",{
+        axios.get("https://project-to-do-sigma.vercel.app/Todos",{
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -26,7 +26,7 @@ export function Todos(){
             console.log("Title or Description cannot be empty");
             return;
         }
-        axios.post("https://project-to-pgm3ssxh7-vilay-aggarwals-projects.vercel.app/AddTodo",{
+        axios.post("https://project-to-do-sigma.vercel.app/AddTodo",{
             title: newTitle,
             description: newDescription
         },{
@@ -44,7 +44,7 @@ export function Todos(){
         })
     }
     function updateTodo(todo){
-        axios.put("https://project-to-pgm3ssxh7-vilay-aggarwals-projects.vercel.app/UpdateTodo",{
+        axios.put("https://project-to-do-sigma.vercel.app/UpdateTodo",{
             title: todo.Title
         },{
             headers: {
@@ -63,7 +63,7 @@ export function Todos(){
     }
 
     function deleteTodo(todo){
-        axios.delete("https://project-to-pgm3ssxh7-vilay-aggarwals-projects.vercel.app/DeleteTodo",{
+        axios.delete("https://project-to-do-sigma.vercel.app/DeleteTodo",{
             headers: {
                 Authorization: `bearer ${token}`
             },
