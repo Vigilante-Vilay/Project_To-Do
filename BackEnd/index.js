@@ -7,7 +7,10 @@ const authenticateToken = require("./Middleware");
 const jwtPassword = "123456";
 
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: ['https://project-to-do-nzoz-iosmedyii-vilay-aggarwals-projects.vercel.app'],
+    credentials: true // Allow cookies for authenticated requests (if applicable)
+  }));
 app.use(express.json());
 
 app.post("/signup",async (req,res)=>{
