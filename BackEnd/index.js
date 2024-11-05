@@ -8,7 +8,8 @@ const jwtPassword = "123456";
 
 const app = express();
 app.use(cors({
-    origin: ['https://project-to-do-nzoz-iosmedyii-vilay-aggarwals-projects.vercel.app'],
+    origin: ["https://project-to-do-nzoz.vercel.app"],
+    methods: ["POST","GET","PUT","DELETE"],
     credentials: true // Allow cookies for authenticated requests (if applicable)
   }));
 app.use(express.json());
