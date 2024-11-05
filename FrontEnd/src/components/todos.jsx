@@ -1,6 +1,6 @@
 import {useState,useEffect} from "react";
 import axios from "axios";
-import trashIcon from "./trash.png"
+import trashIcon from "./trash.png";
 import "../App.css";
 export function Todos(){
     const[todos,setTodos] = useState([]);
@@ -51,7 +51,6 @@ export function Todos(){
                 Authorization: `Bearer ${token}`
             }
         }).then((res)=>{
-                console.log("Succesfully updated")
                 setTodos((prevTodos)=>{
                     return prevTodos.map((t)=>{
                         return t.Title == todo.Title ?{...t,Completed:true} : t;
@@ -69,7 +68,6 @@ export function Todos(){
             },
             data:{title:todo.Title}
         }).then((res)=>{
-            console.log("Succesfully Deleted")
             setTodos((prevTodos) => 
                 prevTodos.filter((t) => t.Title !== todo.Title) // Returning a new array
             );            
