@@ -86,7 +86,7 @@ export function Todos(){
                 }}></input>
                 <button className="button"onClick={addTodo}>Add Todo</button>
             </div><br></br>
-        <h2 style={{color:"green"}}><u>Your Current Todos</u></h2><br></br>
+        <h2 style={{color:"white"}}><u>Your Current Todos</u></h2><br></br>
         {todos.length==0 ? (<p>Nothing yet</p>):(
             todos.map((todo,index)=>{
                 return <div style={{border:"1px solid white", borderRadius:"5px"}}>
