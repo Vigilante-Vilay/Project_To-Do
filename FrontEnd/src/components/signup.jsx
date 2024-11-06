@@ -28,11 +28,16 @@ export function SignUp(){
                 console.log("Failure in logging in",err);
             })
         }).catch((err)=>{
-            if (err.response && err.response.data.error) {
-                alert(err.response.data.error); // Show alert with error message
-            } else {
-                console.log(err);
-                alert("Failure in signup");
+            if(err.response){
+                if(err.response.status==409){
+                    alert("Username already taken.");
+                }
+                else if(err.response && err.response.data.error) {
+                    alert(err.response.data.error); // Show alert with error message
+                }else {
+                    console.log(err);
+                    alert("Failure in signup");
+                }
             }
         })
     }

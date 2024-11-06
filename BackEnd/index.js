@@ -24,7 +24,7 @@ app.post("/signup",async (req,res)=>{
         }
         const existingUser = await User.findOne({Username: username});
         if(existingUser){
-            return res.status(400).json({
+            return res.status(409).json({
                 error:"Username already taken"
             })
         }
