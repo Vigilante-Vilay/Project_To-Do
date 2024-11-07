@@ -23,7 +23,9 @@ export function SignUp(){
                 console.log("Successfully Logged in as well")
                 const token = res.data.token;
                 sessionStorage.setItem("token",token); //Saving the token in the sessionStorage
-            navigate("/todos");
+                setUser("");
+                setPass("");
+                navigate("/todos");
             }).catch((err)=>{
                 console.log("Failure in logging in",err);
             })
