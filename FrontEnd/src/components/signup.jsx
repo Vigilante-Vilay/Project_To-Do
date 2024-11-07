@@ -12,17 +12,13 @@ export function SignUp(){
             alert("Incorrect username or password")
             return;
         }
-        const tempUser = user;
-        const tempPass = pass;
         axios.post("https://project-to-do-sigma.vercel.app/signup",{
-            username: tempUser,
-            password: tempPass
+            username: user,
+            password: pass
         }).then((res)=>{
-            setUser("");
-            setPass("");
             axios.post("https://project-to-do-sigma.vercel.app/login",{
-                username: tempUser,
-                password: tempPass
+                username: user,
+                password: pass
             }).then((res)=>{
                 console.log("Successfully Logged in as well")
                 const token = res.data.token;
